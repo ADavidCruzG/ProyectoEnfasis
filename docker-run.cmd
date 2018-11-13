@@ -1,0 +1,1 @@
+docker run -p 3003:3003 -p 35729:35729 --name proyecto-enfasis-desarrollo --link db-mongo:db-mongo proyecto-enfasis
