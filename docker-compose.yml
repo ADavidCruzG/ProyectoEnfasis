@@ -1,0 +1,20 @@
+version: '3.1'
+
+# Servicios/Contenedores a correr
+services:
+  angular:
+    build: client # Directorio donde está el Dockerfile del front
+    ports:
+      - "4002:4002" # Mapeo de puertos front
+
+  express:
+    build: server # Directorio donde está el Dockerfile del back
+    ports:
+      - "3003:3003" # Mapeo de puertos back
+    links:
+      - database # Asociación con serviciod e base de datos
+
+  database:
+    image: mongo # No es necesario un contenedor para BD, con al imagen oficial es suficiente
+    ports:
+      - "27017:27017" # Mapeo de puertos BD
