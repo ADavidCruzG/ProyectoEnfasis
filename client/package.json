@@ -1,0 +1,13 @@
+{
+  "name": "front-end",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Agustín David Cruz González",
+  "main": "",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1"
+  }
+}

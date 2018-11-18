@@ -1,2 +1,3 @@
-docker stop proyecto-enfasis-desarrollo
-docker stop db-mongo
+docker stop proyectoenfasis_database_1
+docker stop proyectoenfasis_express_1
+docker stop proyectoenfasis_angular_1
