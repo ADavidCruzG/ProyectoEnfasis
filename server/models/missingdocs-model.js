@@ -5,18 +5,18 @@
 
 const mongoose = require('mongoose'), Schema = mongoose.Schema;
 
-let missingdocsSchema = new Schema(
-    {	
-    	docid: {type: Number, required: true, unique:true, index: true},
-    	doctype: {type: String, required: true},
-        summary: {type: String, required: true},
+let missingDocsSchema = new Schema(
+    {
+        docId: {type: String, required: true, unique: true, index: true},
+        docType: {type: String, required: true},
+        summary: {type: String},
         city: {type: String, required: true},
-        place: {type: String, required: true},
-        contactnumber: {type: Number, required: true},
-        contactemail: {type: String, required: true},
-        date: {type: Date, required: true},
-        found: {type: Boolean, required: true}
+        place: {type: String},
+        contactNumber: {type: Number, required: true},
+        contactEmail: {type: String, required: true},
+        dateFound: {type: Date, required: true},
+        found: {type: Boolean, required: true, default: false}
     }
 );
 
-module.exports = mongoose.model('Missingdocs', missingdocsSchema);
+module.exports = mongoose.model('MissingDocs', missingDocsSchema);
