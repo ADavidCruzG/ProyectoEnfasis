@@ -1,4 +1,6 @@
-
+/**
+ * Created by David Cruz on 04/08/2017.
+ */
 'use strict';
 
 let crypto = require('crypto');
