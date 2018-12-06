@@ -19,7 +19,7 @@ const appRoutes = [
   {path: 'welcome', component: WelcomeComponent},
   {path: 'users/register', component: UserCreateComponent},
   {path: 'users/login', component: UserLoginComponent},
-  {path: 'missingdocs/register', component: MissingdocRegisterComponent},
+  {path: 'missingdocs/register', component: MissingdocRegisterComponent}
 ];
 
 @NgModule({
@@ -34,13 +34,12 @@ const appRoutes = [
     UserCreateComponent,
     HomeComponent,
     WelcomeComponent,
-    UserLoginComponent,
-    MissingdocRegisterComponent
+    UserLoginComponent
   ],
   providers: [
     UsersService,
     {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
-  exports: [UserCreateComponent, HomeComponent, WelcomeComponent, UserLoginComponent, MissingdocRegisterComponent]
+  exports: [UserCreateComponent, HomeComponent, WelcomeComponent, UserLoginComponent]
 })
 export class UsersModule { }
