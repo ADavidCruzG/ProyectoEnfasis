@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 import { ToasterModule } from 'angular2-toaster';
 import { RouterModule } from '@angular/router';
 import { UsersModule} from './users/users.module';
-
-import { AppComponent } from './app.component';
+import { MissingDocsModule} from './missingdocs/missingdocs.module';
 
 import { UsersService} from './users/users.service';
+import { MissingDocsService} from './missingdocs/missingdocs.service';
+import { AppComponent } from './app.component';
+
 
 @NgModule({
   declarations: [
@@ -16,9 +18,13 @@ import { UsersService} from './users/users.service';
     BrowserModule,
     ToasterModule,
     RouterModule,
-    UsersModule
+    UsersModule,
+    MissingDocsModule
   ],
-  providers: [UsersService],
+  providers: [
+    UsersService,
+    MissingDocsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
