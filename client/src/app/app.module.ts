@@ -8,6 +8,7 @@ import { MissingDocsModule} from './missingdocs/missingdocs.module';
 import { UsersService} from './users/users.service';
 import { MissingDocsService} from './missingdocs/missingdocs.service';
 import { AppComponent } from './app.component';
+import { varGlobalsService } from './globals';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { AppComponent } from './app.component';
   ],
   providers: [
     UsersService,
-    MissingDocsService
+    MissingDocsService,
+    varGlobalsService
   ],
   bootstrap: [AppComponent]
 })

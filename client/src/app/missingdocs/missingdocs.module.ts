@@ -7,6 +7,7 @@ import {MissingDocsService} from './missingdocs.service';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 import { MissingdocRegisterComponent } from './missingdoc-register/missingdoc-register.component';
+import { MissingdocSearchComponent } from './missingdoc-search/missingdoc-search.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { MissingdocRegisterComponent } from './missingdoc-register/missingdoc-re
     HttpModule
   ],
   declarations: [
-    MissingdocRegisterComponent
+    MissingdocRegisterComponent,
+    MissingdocSearchComponent
   ],
   providers: [
     MissingDocsService,

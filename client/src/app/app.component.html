@@ -12,9 +12,10 @@
         <div id="mainNav" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li [routerLinkActive]="['active']"><a [routerLink]="['/home']">Inicio</a></li>
-            <li [routerLinkActive]="['active']"><a [routerLink]="['users/login']">Iniciar sesión</a></li>
-            <li [routerLinkActive]="['active']"><a [routerLink]="['users/register']">Registrarse</a></li>
-            <li [routerLinkActive]="['active']"><a [routerLink]="['missingdocs/register']">Documento perdido</a></li>
+            <li [routerLinkActive]="['active']" *ngIf="!varGlobalsService.login == true"><a [routerLink]="['users/login']">Iniciar sesión</a></li>
+            <li [routerLinkActive]="['active']" *ngIf="!varGlobalsService.login == true"><a [routerLink]="['users/register']">Registrarse</a></li>
+            <li [routerLinkActive]="['active']" *ngIf="varGlobalsService.login == true"><a [routerLink]="['missingdocs/register']">Documento perdido</a>
+            <li [routerLinkActive]="['active']" ><a [routerLink]="['missingdocs/search']">Buscar</a></li>
           </ul>
         </div>
       </div>

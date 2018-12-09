@@ -6,7 +6,6 @@ import 'rxjs/add/operator/map';
 export class MissingDocsService {
 
 	constructor(private http: Http) {
-
 	}
 
 	getMissingDocById(id) {

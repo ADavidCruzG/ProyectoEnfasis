@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {UsersService} from '../users.service';
 import {ToasterService} from 'angular2-toaster';
+import {varGlobalsService} from '../../globals';
 
 @Component({
   selector: 'app-user-login',
@@ -12,13 +13,16 @@ export class UserLoginComponent implements OnInit {
 
   user = {};
 
-  constructor(private usersService: UsersService, private router: Router, private toasterService: ToasterService) {
+  constructor(private usersService: UsersService, private router: Router, private toasterService: ToasterService, private varGlobalsService: varGlobalsService) {
   }
 
   ngOnInit() {
   }
 
   loginUser() {
+
+    this.varGlobalsService.login = false;
+
     let userToLogin = this.user;
 
     this.usersService.getUserByEmailToLogin(userToLogin)
@@ -39,6 +43,7 @@ export class UserLoginComponent implements OnInit {
           });
         } else if (res['status'] === 200) {
           // Successful authentication, code 200 from server
+          this.varGlobalsService.login = true;
           this.toasterService.pop({
             type: 'success',
             title: 'Bienvenido',

@@ -12,6 +12,7 @@ import { HomeComponent } from '../home/home.component';
 import { WelcomeComponent} from '../welcome/welcome.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { MissingdocRegisterComponent } from '../missingdocs/missingdoc-register/missingdoc-register.component';
+import { MissingdocSearchComponent } from '../missingdocs/missingdoc-search/missingdoc-search.component';
 
 const appRoutes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -19,7 +20,8 @@ const appRoutes = [
   {path: 'welcome', component: WelcomeComponent},
   {path: 'users/register', component: UserCreateComponent},
   {path: 'users/login', component: UserLoginComponent},
-  {path: 'missingdocs/register', component: MissingdocRegisterComponent}
+  {path: 'missingdocs/register', component: MissingdocRegisterComponent},
+  {path: 'missingdocs/search', component: MissingdocSearchComponent}
 ];
 
 @NgModule({
