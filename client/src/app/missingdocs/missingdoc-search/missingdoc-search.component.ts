@@ -27,18 +27,12 @@ export class MissingdocSearchComponent implements OnInit {
 
     this.missingDocsService.getMissingDocById(this.missingDoc.searchTerm)
       .then((missingDocReturned) => {
-        if (typeof missingDocReturned['misssingDoc'] === 'undefined' || missingDocReturned['misssingDoc'] === null) {
+        if (typeof missingDocReturned === 'undefined' || missingDocReturned === null) {
         	this.toasterService.pop('warning', 'No existe', 'No se encontró ningún documento con ' + this.missingDoc.searchTerm);
         }else {
-
-        	
-          
-          if(missingDocReturned['status']==200){
             this.toasterService.pop('success', 'Encontrado', 'Si existe un documento con ese ID: ' + this.missingDoc.searchTerm);
             this.showResponseDiv = true;
-            this.missingDocRes.push(missingDocReturned['misssingDoc']);
-
-          }
+            this.missingDocRes.push(missingDocReturned);
         }
       }, (err) => {
         console.log(err);
