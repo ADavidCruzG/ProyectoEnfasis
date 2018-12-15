@@ -9,6 +9,7 @@ services:
 env:
     - NODE_ENV=travisci
 before_script:
+  - cd server
   - npm cache clean --force
   - npm install
   - cd ..
