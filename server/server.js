@@ -1,6 +1,3 @@
-/**
- * Created by David Cruz on 09/06/2017.
- */
 'use strict';
 
 let express = require('express');
@@ -10,6 +7,7 @@ let logger = require('morgan');
 let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
+let cors = require('cors');
 
 let index = require('./routes/index-route');
 let users = require('./routes/users-route');
@@ -29,6 +27,7 @@ mongoose.connect('mongodb://localhost/MissingDocsPOLI')
 let app = express();
 
 //app.use(favicon(path.join(__dirname, '../client', 'favicon.ico')));
+app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));

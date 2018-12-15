@@ -1,31 +1,11 @@
-/**
- * Created by David Cruz on 04/08/2017.
- */
-'use strict';
-
-const express = require('express');
-const router = express.Router();
-/*
+const userModel = require('../models/users-model.js');
 const randomString = require('randomstring');
 const userUtil = require('../util/user-util');
-*/
-const userController = require('../controllers/users-controller');
 
-//const userModel = require('../models/users-model');
+const userCtrl = {};
 
-/* CREATE user. */
-router.post('/', userController.createUser);
-
-/* GET user by email. */
-router.get('/:email', userController.getUserByEmail);
-
-/* GET user by email with decrypted password. */
-router.post('/:login', userController.getLogin);
-
-/* CREATE user. */
-/*
-router.post('/', (req, res, next) => {
-
+//Crear usuario
+userCtrl.createUser = (req, res, next) => {
     // Acá se encripta la contraseña antes de guardar
     let user = req.body;
 
@@ -36,26 +16,25 @@ router.post('/', (req, res, next) => {
         if (err) {
             return next(err);
         }
+        console.log("usuario creado");
         res.json(userCreated);
     });
-});
+}
 
-/* GET user by email. */
-/*
-router.get('/:email', (req, res, next) => {
+//Consultar usuario por medio del email
+userCtrl.getUserByEmail = (req, res, next) => {
     userModel.findOne({email: req.params.email}, (err, user) => {
         if (err) {
             return next(err);
         }
+        console.log("email encontrado");
         res.json(user);
     });
-});
-*/
+}
 
+//Consultar usuario (login)
+userCtrl.getLogin = (req, res, next) => {
 
-/* GET user by email with decrypted password. */
-/*
-router.post('/login', (req, res, next) => {
     userModel.findOne({email: req.body.email}, (err, user) => {
         if (err) {
             return next(err);
@@ -68,13 +47,14 @@ router.post('/login', (req, res, next) => {
             user.password = userUtil.decryptUserPassword(user.salt, user.password);
 
             if (user.password === req.body.password) {
+            	
                 res.json({message: 'Password Match', status: 200, user: user});
             } else {
                 res.json({message: 'Wrong Password', status: 4041});
             }
         }
     });
-});
-*/
+}
 
-module.exports = router;
+
+module.exports = userCtrl;
