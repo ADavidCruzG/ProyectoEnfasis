@@ -1,7 +1,7 @@
 {
   "name": "back-end",
   "version": "1.0.0",
-  "description": "Backend del proyecto de énfasis profesional",
+  "description": "Backend del proyecto de énfasis profesional ",
   "author": "Agustín David Cruz González, Cristian Jair Rojas Velandia",
   "license": "MIT",
   "main": "server.js",
