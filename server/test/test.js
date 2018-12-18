@@ -1,5 +1,6 @@
 'use strict';
 global.emailEq = 'test@test.com';
+global.docEq = 'A-1';
 const expect = require('chai').expect;
 const request = require('request');
 const faker = require('faker');
@@ -18,7 +19,26 @@ let dummyUser = (sameEmail) => {
     };
 };
 
-/* EXITOSAS */
+let dummyDoc = (sameId) => {
+    let docId = '';
+    if (sameId) {
+        docId = docEq;
+    } else {
+        docId = faker.random.uuid();
+    }
+    return {
+        docId: docId,
+        docType: 'CC',
+        summary: 'Descripcion',
+        city: 'Londres',
+        place: 'Stamford Bridge',
+        contactNumber: '423423',
+        contactEmail: 'test@test.com',
+        dateFound: '2018/12/17'
+    };
+};
+
+/* USUARIO */
 
 // Crea un nuevo usuario
 it('should return an user after created it', function (done) {
@@ -38,7 +58,7 @@ it('should return an user after created it', function (done) {
 it('should return an user after created it - STATUS', function (done) {
     let options = {
         method: 'post',
-        body: dummyUser(),
+        body: dummyUser(false),
         json: true,
         url: 'http://localhost:3003/api/users'
     };
@@ -97,4 +117,51 @@ it('should to do login process - STATUS', function (done) {
     });
 });
 
-/* FALLIDAS */
+/* DOCUMENTOS PERDIDOS */
+
+// Crea un nuevo documento perdido
+it('should return an missing doc after created it', function (done) {
+    let options = {
+        method: 'post',
+        body: dummyDoc(true),
+        json: true,
+        url: 'http://localhost:3003/api/missingdocs'
+    };
+    request.post(options, function (error, response, body) {
+        expect(response.request.body).to.equal(JSON.stringify(dummyDoc(true)));
+        done();
+    });
+});
+
+// Crea un nuevo documento perdido (STATUS)
+it('should return an missing doc after created it - STATUS', function (done) {
+    let options = {
+        method: 'post',
+        body: dummyDoc(false),
+        json: true,
+        url: 'http://localhost:3003/api/missingdocs'
+    };
+    request.post(options, function (error, response, body) {
+        expect(response.statusCode).to.equal(200);
+        done();
+    });
+});
+
+// Retorna un docuemnto existente por id
+it('should return an user searched by email', function (done) {
+    let docId = '1234567890';
+    request.get('http://localhost:3003/api/missingdocs/' + docId, function (error, response, body) {
+        let missingDoc = JSON.parse(body);
+        expect(missingDoc.docId).to.equal(docId);
+        done();
+    });
+});
+
+// Retorna un docuemnto existente por id (STATUS)
+it('should return an user searched by email - STATUS', function (done) {
+    let docId = '1234567890';
+    request.get('http://localhost:3003/api/missingdocs/' + docId, function (error, response, body) {
+        expect(response.statusCode).to.equal(200);
+        done();
+    });
+});
