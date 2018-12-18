@@ -1,0 +1,177 @@
+<form (ngSubmit)="createMissingDoc()" #missingDocCreateForm="ngForm">
+	<div class="container">
+	    <div class="row margin-top-50">
+		
+			<div class="col-lg-3"></div>
+			<div class="col-lg-6">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+	        			<h6 class="text-center responsive-text">Registro del documento</h6>
+	      			</div>
+					
+
+					<div class="panel-body">
+						
+						<div class="form-group">
+							<label class="control-label" for="docId">Id</label>
+							
+							<span class="input-icon">
+		                        <input type="text" id="docId" class="form-control" placeholder="Número único" [(ngModel)]="missingDoc.docId" name="docId" required #docId="ngModel">
+		                        <i class="fa fa-key"></i>
+	                        </span>
+
+	                        <div *ngIf="docId.errors && (docId.dirty || docId.touched)" class="alert alert-danger">
+								<span class="input-icon">
+									<div [hidden]="!docId.errors.required" >
+					                	<i class="fa fa-times-circle"></i>
+					                	El ID es obligatorio.
+					                </div>
+								</span>
+	                        </div>
+						</div>
+
+
+						
+						<div class="form-group">
+							<label class="control-label" for="docType">Tipo</label>
+							
+							<span class="input-icon">
+		                        <input type="text" id="docType" class="form-control" placeholder="Tipo de documento" [(ngModel)]="missingDoc.docType" name="docType" required #docType="ngModel">
+		                        <i class="fa fa-id-card-o"></i>
+	                        </span>
+
+	                        <div *ngIf="docType.errors && (docType.dirty || docType.touched)" class="alert alert-danger">
+								<span class="input-icon">
+									<div [hidden]="!docType.errors.required" >
+					                	<i class="fa fa-times-circle"></i>
+					                	El tipo del documento es obligatorio.
+					                </div>
+								</span>
+	                        </div>
+						</div>
+
+
+						<div class="form-group">
+							<label class="control-label" for="summary">Descripción</label>
+							
+							<span class="input-icon">
+								<textarea id="summary" class="form-control" [(ngModel)]="missingDoc.summary" name="summary" #summary="ngModel" rows="3"></textarea>
+		                        <i class="fa fa-align-justify"></i>
+	                        </span>
+						</div>
+
+
+						<div class="form-group">
+							<label class="control-label" for="city">Ciudad</label>
+							
+							<span class="input-icon">
+		                        <input type="text" id="city" class="form-control" placeholder="Ciudad donde encontró el documento" [(ngModel)]="missingDoc.city" name="city" required #city="ngModel">
+		                        <i class="fa fa-map-marker"></i>
+	                        </span>
+
+	                        <div *ngIf="city.errors && (city.dirty || city.touched)" class="alert alert-danger">
+								<span class="input-icon">
+									<div [hidden]="!city.errors.required" >
+					                	<i class="fa fa-times-circle"></i>
+					                	La ciudad es obligatoria.
+					                </div>
+								</span>
+	                        </div>
+						</div>
+
+
+						<div class="form-group">
+							<label class="control-label" for="place">Lugar</label>
+							
+							<span class="input-icon">
+		                        <input type="text" id="place" class="form-control" placeholder="Localidad" [(ngModel)]="missingDoc.place" name="place" #place="ngModel">
+		                        <i class="fa fa-location-arrow"></i>
+	                        </span>
+						</div>
+
+
+						<div class="form-group">
+							<label class="control-label" for="contactNumber">Número de contacto</label>
+							
+							<span class="input-icon">
+		                        <input type="text" id="contactNumber" class="form-control" placeholder="Teléfono celular o fijo " pattern="[0-9/]*" [(ngModel)]="missingDoc.contactNumber" name="contactNumber" required #contactNumber="ngModel">
+		                        <i class="fa fa-mobile"></i>
+	                        </span>
+							
+							<div [hidden]="contactNumber.valid || contactNumber.untouched" class="alert alert-danger">
+								<span class="input-icon">
+									<div *ngIf="contactNumber.errors && contactNumber.errors.required">
+										<i class="fa fa-times-circle"></i>
+	                  					El número de contacto es obligatorio.
+									</div>
+
+									<div *ngIf="contactNumber.errors && contactNumber.errors.pattern">
+										<i class="fa fa-times-circle"></i>
+	                  					Solo se permiten números.
+									</div>
+								</span>
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<label class="control-label" for="contactEmail">Email de contacto</label>
+							
+							<span class="input-icon">
+		                        <input type="text" id="contactEmail" class="form-control" placeholder="Correo de contacto " pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="missingDoc.contactEmail" name="contactEmail" required #contactEmail="ngModel">
+		                        <i class="fa fa-envelope-o"></i>
+	                        </span>
+							
+							<div [hidden]="contactEmail.valid || contactEmail.untouched" class="alert alert-danger">
+								<span class="input-icon">
+									<div *ngIf="contactEmail.errors && contactEmail.errors.required">
+										<i class="fa fa-times-circle"></i>
+	                  					El correo de contacto es obligatorio.
+									</div>
+
+									<div *ngIf="contactEmail.errors && contactEmail.errors.pattern">
+										<i class="fa fa-times-circle"></i>
+	                  					El formato de correo no es válido.
+									</div>
+								</span>
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<label class="control-label" for="dateFound">Fecha</label>
+							
+							<span class="input-icon">
+		                        <input type="date" id="dateFound" class="form-control" [(ngModel)]="missingDoc.dateFound" name="dateFound" required #dateFound="ngModel">
+		                        <i class="fa fa-calendar"></i>
+	                        </span>
+							
+							<div [hidden]="dateFound.valid || dateFound.untouched" class="alert alert-danger">
+								<span class="input-icon">
+									<div *ngIf="dateFound.errors && dateFound.errors.required">
+										<i class="fa fa-times-circle"></i>
+	                  					El número de contacto es obligatorio.
+									</div>
+								</span>
+							</div>
+						</div>
+
+						
+						<div class="form-group text-center">
+			             	<button class="btn btn-primary" type="submit" [disabled]="!missingDocCreateForm.form.valid">
+				            	<i class="fa fa-floppy-o"></i>
+				                <span class="hidden-xs"><b>Registrar</b></span>
+			            	</button>
+			            </div>
+
+
+
+					</div>
+
+				</div>
+
+			</div>
+
+	    </div>
+    </div>
+</form>

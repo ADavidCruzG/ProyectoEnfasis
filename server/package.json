@@ -1,0 +1,37 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "Backend del proyecto de énfasis profesional ",
+  "author": "Agustín David Cruz González, Cristian Jair Rojas Velandia",
+  "license": "MIT",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "./node_modules/.bin/mocha ./test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ADavidCruzG/ProyectoEnfasis"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.5",
+    "debug": "~2.6.3",
+    "ejs": "~2.5.6",
+    "express": "^4.16.4",
+    "moment": "~2.22.2",
+    "mongoose": "^5.3.14",
+    "morgan": "^1.9.1",
+    "nodemon": "~1.11.0",
+    "open": "~0.0.5",
+    "randomstring": "~1.1.5",
+    "serve-favicon": "~2.4.2"
+  },
+  "devDependencies": {
+    "mocha": "~5.2.0",
+    "chai": "~4.2.0",
+    "request": "~2.88.0",
+    "faker": "~4.1.0"
+  }
+}

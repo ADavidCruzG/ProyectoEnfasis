@@ -1,0 +1,70 @@
+<form (ngSubmit)="searchMissingDoc()" #missingDocSearchForm="ngForm">
+	<div class="container">
+	    <div class="row margin-top-50">
+		
+			<div class="col-lg-3"></div>
+			<div class="col-lg-6">
+				<div class="panel panel-primary">
+
+
+					<div class="panel-heading">
+	        			<h6 class="text-center responsive-text">Buscar documento</h6>
+	      			</div>
+
+
+	      			<div class="panel-body">
+						
+						<div class="form-group">
+							<label class="control-label" for="searchTerm">Término de búsqueda</label>
+							
+							<span class="input-icon">
+		                        <input type="text" id="searchTerm" class="form-control" placeholder="Número único" [(ngModel)]="missingDoc.searchTerm" name="searchTerm" required #searchTerm="ngModel">
+		                        <i class="fa fa-search"></i>
+	                        </span>
+
+	                        <div *ngIf="searchTerm.errors && (searchTerm.dirty || searchTerm.touched)" class="alert alert-danger">
+								<span class="input-icon">
+									<div [hidden]="!searchTerm.errors.required" >
+					                	<i class="fa fa-times-circle"></i>
+					                	Es necesario que indique el término de búsqueda.
+					                </div>
+								</span>
+	                        </div>
+						</div>
+
+
+						<div class="form-group text-center">
+			             	<button class="btn btn-primary" type="submit" [disabled]="!missingDocSearchForm.form.valid">
+				                <span class="hidden-xs"><b>Buscar</b></span>
+			            	</button>
+			            </div>
+
+						<div id="response" *ngIf="showResponseDiv == true">
+							
+							<div class="card container" style="width: 90%">
+							 	<div class="card-body">
+								    <h5 class="card-title">DOCUMENTO ENCONTRADO</h5>
+								    <ul class="list-group list-group-flush" *ngFor="let res of missingDocRes; index as i">
+										<li class="list-group-item">CIUDAD: {{res.city}}</li>
+										<li class="list-group-item">LUGAR: {{res.place}}</li>
+										<li class="list-group-item">DESCRIPCIÓN: {{res.summary}}</li>
+										<li class="list-group-item">CONTACTO: {{res.contactNumber}}</li>
+										<li class="list-group-item">EMAIL: {{res.contactEmail}}</li>
+									</ul>
+								</div>
+							</div>
+							
+		      			</div>
+
+	      			</div>
+
+	      			
+
+
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+</form>
