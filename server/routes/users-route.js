@@ -20,7 +20,7 @@ router.post('/', userController.createUser);
 router.get('/:email', userController.getUserByEmail);
 
 /* GET user by email with decrypted password. */
-router.post('/:login', userController.getLogin);
+router.post('/login', userController.getLogin);
 
 /* CREATE user. */
 /*
