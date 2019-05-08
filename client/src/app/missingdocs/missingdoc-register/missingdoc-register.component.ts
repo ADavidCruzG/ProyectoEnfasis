@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {MissingDocsService} from '../missingdocs.service';
 
 @Component({
-  selector: 'app-missingdoc-register',
+  selector: 'app-missingdoc-register.container-form',
   templateUrl: './missingdoc-register.component.html',
   styleUrls: ['./missingdoc-register.component.css']
 })
@@ -21,11 +21,12 @@ export class MissingdocRegisterComponent implements OnInit {
   createMissingDoc() {
     this.missingDocsService.getMissingDocById(this.missingDoc.docId)
       .then((missingDocReturned) => {
+        console.log(missingDocReturned);
         if (typeof missingDocReturned === 'undefined' || missingDocReturned === null) {
           this.missingDocsService.createMissingDoc(this.missingDoc)
             .then(() => {
               this.toasterService.pop('success', 'Proceso exitoso', 'El documento se creó exitosamente');
-              this.router.navigate(['home']);
+              this.router.navigate(['missingdocs/search']);
             }, (err) => {
               console.log(err);
             });

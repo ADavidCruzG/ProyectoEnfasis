@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {MissingDocsService} from '../missingdocs.service';
 
 @Component({
-  selector: 'app-missingdoc-search',
+  selector: 'app-missingdoc-search.container-form',
   templateUrl: './missingdoc-search.component.html',
   styleUrls: ['./missingdoc-search.component.css']
 })

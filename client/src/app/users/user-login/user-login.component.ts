@@ -5,7 +5,7 @@ import {ToasterService} from 'angular2-toaster';
 import {varGlobalsService} from '../../globals';
 
 @Component({
-  selector: 'app-user-login',
+  selector: 'app-user-login.container-form',
   templateUrl: './user-login.component.html',
   styleUrls: ['./user-login.component.css']
 })
@@ -49,7 +49,7 @@ export class UserLoginComponent implements OnInit {
             title: 'Bienvenido',
             body: 'Hola ' + res['user'].firstName + ' ' + res['user'].lastName
           });
-          this.router.navigate(['welcome']);
+          this.router.navigate(['missingdocs/register']);
         }
       }, (err) => {
         console.log(err);

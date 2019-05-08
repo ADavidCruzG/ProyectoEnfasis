@@ -1,4 +1,48 @@
 <div class="container">
+<toaster-container [toasterconfig]="toasterConfig"></toaster-container>
+  <div class="preloader-image">
+    <div class="preloader">
+    <img src="./../img/loader.gif">
+  </div>
+  </div>
+
+  <div id="background"></div>
+  <div id="transparent-lines"></div>
+
+  <div class="container main" align="center">
+
+  <h1>Missing Docs</h1>
+  <p>Documentos &nbsp;&bull;&nbsp; Tarjetas &nbsp;&bull;&nbsp; Identificaciones</p>
+  <br>
+
+  <div class="container-search gray-container-background" align="center">
+    <router-outlet></router-outlet>
+  </div>
+
+  <br>
+  <div class="container-main-menu" align="center">
+  <nav>
+    <ul id="btn-menu">
+
+      <li id="menu-searching"><a href="#" class="icon fa-search" container-id="container-searching" [routerLink]="['missingdocs/search']"></a></li>
+
+      <li id="menu-create-missing-doc" *ngIf="varGlobalsService.login"><a href="#" class="icon fa-file-o" container-id="container-create-missing-doc" [routerLink]="['missingdocs/register']"></a></li>
+
+      <li id="menu-login" *ngIf="!varGlobalsService.login"><a href="#" class="icon fa-sign-in" container-id="container-login" [routerLink]="['users/login']"></a></li>
+
+      <li id="menu-signup" *ngIf="!varGlobalsService.login"><a href="#" class="icon fa-user-o" container-id="container-signup" [routerLink]="['users/register']"></a></li>
+    </ul>
+  </nav>
+
+  </div>
+
+  </div>
+</div>
+
+
+
+<!--
+<div class="container">
   <toaster-container [toasterconfig]="toasterConfig"></toaster-container>
   <div class="row">
     <nav class="navbar navbar-default">
@@ -25,4 +69,5 @@
     <router-outlet></router-outlet>
   </div>
 </div>
+-->
 

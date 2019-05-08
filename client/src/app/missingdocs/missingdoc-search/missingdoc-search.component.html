@@ -1,3 +1,66 @@
+
+<div id="container-searching" class="container-menu">
+	<form id="form_searching" (ngSubmit)="searchMissingDoc()" #missingDocSearchForm="ngForm">
+		<div id="spotlight_wrapper">
+			<input type="text" placeholder="Búsqueda" id="searchTerm" class="form-control col-lg-12" placeholder="Número único" [(ngModel)]="missingDoc.searchTerm" name="searchTerm" required #searchTerm="ngModel"/>
+		</div>
+		<br/>
+		<div class="form-group text-center">
+         	<button class="btn btn-primary" type="submit" [disabled]="!missingDocSearchForm.form.valid">
+                <span class="hidden-xs"><b>Buscar</b></span>
+        	</button>
+        </div>
+
+        <div id="response" *ngIf="showResponseDiv == true">	
+			
+			<div id="result-missing-doc">
+
+				<div class="form-group">
+					<div class="row">
+						<div class="col-12">
+							<h3>¡Felicidades, tu documento fue encontrado!</h3>
+							
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<div *ngFor="let res of missingDocRes; index as i">
+								<p id="message-missing-doc-found">
+									Afortunadamente alguien más ha encontrado lo que estás buscando el día {{res.dateFound | date : 'dd/MM/yyyy'}} en la ciudad {{res.city}}, localizada en {{res.place}}; puedes contactarte por medio del siguiente correo: {{res.contactEmail}} o por teléfono: {{res.contactNumber}}.
+
+									"{{res.summary}}"
+
+									Recuerda siempre acordar encuentros en lugares seguros, de confianza o por medio de envío si lo deseas.
+								</p>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<!--
+			<div class="card container" style="width: 90%">
+			 	<div class="card-body">
+				    <h5 class="card-title">DOCUMENTO ENCONTRADO</h5>
+				    <ul class="list-group list-group-flush" *ngFor="let res of missingDocRes; index as i">
+						<li class="list-group-item">CIUDAD: {{res.city}}</li>
+						<li class="list-group-item">LUGAR: {{res.place}}</li>
+						<li class="list-group-item">DESCRIPCIÓN: {{res.summary}}</li>
+						<li class="list-group-item">CONTACTO: {{res.contactNumber}}</li>
+						<li class="list-group-item">EMAIL: {{res.contactEmail}}</li>
+					</ul>
+				</div>
+			</div>
+			-->
+		</div>
+	</form>
+</div>
+
+
+<!--
+
 <form (ngSubmit)="searchMissingDoc()" #missingDocSearchForm="ngForm">
 	<div class="container">
 	    <div class="row margin-top-50">
@@ -32,6 +95,8 @@
 	                        </div>
 						</div>
 
+
+						
 
 						<div class="form-group text-center">
 			             	<button class="btn btn-primary" type="submit" [disabled]="!missingDocSearchForm.form.valid">
@@ -68,3 +133,5 @@
 		</div>
 	</div>
 </form>
+
+-->

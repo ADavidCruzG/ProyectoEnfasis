@@ -1,4 +1,6 @@
+
 /*Margins*/
+/*
 .margin-negative-5 {
   margin: -5px !important;
 }
@@ -211,7 +213,9 @@
   margin-left: 50px !important;
 }
 
+*/
 /*Input icons*/
+/*
 span.input-icon, span.input-help {
   display: block;
   position: relative;
@@ -256,8 +260,9 @@ span.input-help > input {
   left: auto;
   right: 4px;
 }
-
+*/
 /*Responsive text*/
+/*
 h6.responsive-text {
   font-size: 2.5vh;
 }
@@ -340,3 +345,4 @@ h1.responsive-text {
   display: block;
   margin-top: 10px;
 }
+*/

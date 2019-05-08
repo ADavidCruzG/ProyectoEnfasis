@@ -29,4 +29,5 @@ import { varGlobalsService } from './globals';
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

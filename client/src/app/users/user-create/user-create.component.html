@@ -1,3 +1,119 @@
+<div id="container-signup" class="container-menu" >
+  <form id="form_signup" (ngSubmit)="createUser()" #userCreateForm="ngForm">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-12">
+          <h3>Dar de alta</h3>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-6 col-12">
+          <input type="text" id="name" class="form-control txt-box" placeholder="Nombres" [(ngModel)]="user.firstName" name="Name" required minlength="4" #name="ngModel">
+        </div>
+        <div class="col-lg-6 col-12">
+          <input type="text" id="lastname" class="form-control txt-box" placeholder="Apellidos" [(ngModel)]="user.lastName" name="Lastname" required #lastname="ngModel" >
+        </div>
+      </div>
+
+      <!-- MENSAJES DE VALIDACIÓN ************************************************* -->
+      <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
+        <span class="input-icon">
+        <div [hidden]="!name.errors.required">
+          <i class="fa fa-times-circle"></i>
+          El nombre es obligatorio.
+        </div>
+        <div [hidden]="!name.errors.minlength">
+          <i class="fa fa-exclamation-circle"></i>
+          El nombre debe tener al menos 4 caracteres.
+        </div>
+        </span>
+      </div>
+      
+
+      <div *ngIf="lastname.errors && (lastname.dirty || lastname.touched)" class="alert alert-danger">
+        <span class="input-icon">
+        <div [hidden]="!lastname.errors.required">
+          <i class="fa fa-times-circle"></i>
+          El apellido es obligatorio.
+        </div>
+        </span>
+      </div>
+
+      <!-- ************************************************************************ -->
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-12">
+          <input type="email" id="email" class="form-control txt-box" placeholder="E-mail" [(ngModel)]="user.email" name="Email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #email="ngModel">
+        </div>
+      </div>
+
+      <!-- MENSAJES DE VALIDACIÓN ************************************************* -->
+      <div [hidden]="email.valid || email.untouched" class="alert alert-danger">
+        <span class="input-icon">
+        <div *ngIf="email.errors && email.errors.required">
+          <i class="fa fa-times-circle"></i>
+          El e-mail es obligatorio.
+        </div>
+        <div *ngIf="email.errors && email.errors.pattern">
+          <i class="fa fa-exclamation-circle"></i>
+          El e-mail ingresado no es válido.
+        </div>
+        </span>
+      </div>
+      <!-- ************************************************************************ -->
+
+
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-6 col-12">
+          <input type="password" id="password" class="form-control txt-box" placeholder="Clave" [(ngModel)]="user.password" name="Password" required minlength="5" #password="ngModel">
+        </div>
+        <div class="col-lg-6 col-12">
+          <input type="password" class="form-control txt-box" id="password_signup" placeholder="Repetir clave">
+        </div>
+      </div>
+
+      <!-- MENSAJES DE VALIDACIÓN ************************************************* -->
+      <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger">
+        <span class="input-icon">
+        <div [hidden]="!password.errors.required">
+          <i class="fa fa-times-circle"></i>
+          La contraseña es obligatoria.
+        </div>
+        <div [hidden]="!password.errors.minlength">
+          <i class="fa fa-exclamation-circle"></i>
+          La contraseña debe tener al menos 5 caracteres.
+        </div>
+        </span>
+      </div>
+
+
+      <!-- ************************************************************************ -->
+
+
+    </div>
+    <div class="form-group">
+
+    
+      <div class="form-group text-center">
+        <button class="btn btn-primary form-control" type="submit" [disabled]="!userCreateForm.form.valid">
+          
+          <span class="hidden-xs"><b>Darse de alta</b></span>
+        </button>
+      </div>
+
+
+
+    </div>
+    
+  </form>
+</div>
+
+<!--
 <form (ngSubmit)="createUser()" #userCreateForm="ngForm">
   <div class="container">
     <div class="row margin-top-50">
@@ -104,3 +220,5 @@
     </div>
   </div>
 </form>
+
+-->

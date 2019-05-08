@@ -1,3 +1,156 @@
+<div id="container-create-missing-doc" class="container-menu"  >
+	<form id="form_register_missing_doc" (ngSubmit)="createMissingDoc()" #missingDocCreateForm="ngForm">
+		<div class="form-group">
+			<div class="row">
+				<div class="col-12">
+					<h3>Registrar documento perdido</h3>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-12">
+
+					<input type="text" id="docId" class="form-control txt-box" placeholder="Número único" [(ngModel)]="missingDoc.docId" name="docId" required #docId="ngModel">
+				</div>
+			</div>
+			
+			<!-- MENSAJES DE VALIDACIÓN ************************************************* -->
+			<div *ngIf="docId.errors && (docId.dirty || docId.touched)" class="alert alert-danger">
+				<span class="input-icon">
+					<div [hidden]="!docId.errors.required" >
+	                	El ID es obligatorio.
+	                </div>
+				</span>
+            </div>
+            <!-- ************************************************************************ -->
+
+
+		</div>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-12">
+					<input type="text" id="docType" class="form-control txt-box" placeholder="Tipo de documento" [(ngModel)]="missingDoc.docType" name="docType" required #docType="ngModel">
+				</div>
+			</div>
+
+			<!-- MENSAJES DE VALIDACIÓN ************************************************* -->
+			<div *ngIf="docType.errors && (docType.dirty || docType.touched)" class="alert alert-danger">
+				<span class="input-icon">
+					<div [hidden]="!docType.errors.required" >
+	                	El tipo del documento es obligatorio.
+	                </div>
+				</span>
+            </div>
+            <!-- ************************************************************************ -->
+		</div>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-12">
+					<textarea id="summary" rows="5" class="form-control txt-box" [(ngModel)]="missingDoc.summary" name="summary" #summary="ngModel" placeholder="Breve descripción de cómo encontró el objeto..."></textarea>
+				</div>
+			</div>
+
+		</div>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-lg-6 col-12">
+					<input type="text" id="city" class="form-control txt-box" placeholder="Ciudad donde encontró el documento" [(ngModel)]="missingDoc.city" name="city" required #city="ngModel"
+					>
+				</div>
+				<div class="col-lg-6 col-12">
+					<input type="text" id="place" class="form-control txt-box" placeholder="Localidad" [(ngModel)]="missingDoc.place" name="place" #place="ngModel">
+				</div>
+			</div>
+
+			<!-- MENSAJES DE VALIDACIÓN ************************************************* -->
+			<div *ngIf="city.errors && (city.dirty || city.touched)" class="alert alert-danger">
+				<span class="input-icon">
+					<div [hidden]="!city.errors.required" >
+	                	La ciudad es obligatoria.
+	                </div>
+				</span>
+            </div>
+            <!-- ************************************************************************ -->
+            
+
+
+
+		</div>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-12">
+					<input type="text" id="contactEmail" class="form-control txt-box" placeholder="Correo de contacto " pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="missingDoc.contactEmail" name="contactEmail" required #contactEmail="ngModel">
+				</div>
+			</div>
+	
+			<!-- MENSAJES DE VALIDACIÓN ************************************************* -->
+			<div [hidden]="contactEmail.valid || contactEmail.untouched" class="alert alert-danger">
+				<span class="input-icon">
+					<div *ngIf="contactEmail.errors && contactEmail.errors.required">
+      					El correo de contacto es obligatorio.
+					</div>
+
+					<div *ngIf="contactEmail.errors && contactEmail.errors.pattern">
+      					El formato de correo no es válido.
+					</div>
+				</span>
+			</div>
+			<!-- ************************************************************************ -->
+
+		</div>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-lg-6 col-12">
+					<input type="text" id="contactNumber" class="form-control txt-box" placeholder="Teléfono celular o fijo " pattern="[0-9/]*" [(ngModel)]="missingDoc.contactNumber" name="contactNumber" required #contactNumber="ngModel">
+				</div>
+				<div class="col-lg-6 col-12">
+					<input type="date" id="dateFound" class="form-control txt-box" [(ngModel)]="missingDoc.dateFound" name="dateFound" required #dateFound="ngModel">
+				</div>
+			</div>
+
+			<!-- MENSAJES DE VALIDACIÓN ************************************************* -->
+			<div [hidden]="contactNumber.valid || contactNumber.untouched" class="alert alert-danger">
+				<span class="input-icon">
+					<div *ngIf="contactNumber.errors && contactNumber.errors.required">
+      					El número de contacto es obligatorio.
+					</div>
+
+					<div *ngIf="contactNumber.errors && contactNumber.errors.pattern">
+      					Solo se permiten números.
+					</div>
+				</span>
+			</div>
+
+
+			<div [hidden]="dateFound.valid || dateFound.untouched" class="alert alert-danger">
+				<span class="input-icon">
+					<div *ngIf="dateFound.errors && dateFound.errors.required">
+      					El número de contacto es obligatorio.
+					</div>
+				</span>
+			</div>
+			
+			<!-- ************************************************************************ -->
+
+
+		</div>
+
+
+		<div class="form-group text-center">
+         	<button class="btn btn-primary form-control" type="submit" [disabled]="!missingDocCreateForm.form.valid">
+            
+                <span class="hidden-xs"><b>Registrar documento</b></span>
+        	</button>
+        </div>
+
+		
+	</form>
+</div>
+
+
+
+<!--
 <form (ngSubmit)="createMissingDoc()" #missingDocCreateForm="ngForm">
 	<div class="container">
 	    <div class="row margin-top-50">
@@ -98,19 +251,10 @@
 		                        <i class="fa fa-mobile"></i>
 	                        </span>
 							
-							<div [hidden]="contactNumber.valid || contactNumber.untouched" class="alert alert-danger">
-								<span class="input-icon">
-									<div *ngIf="contactNumber.errors && contactNumber.errors.required">
-										<i class="fa fa-times-circle"></i>
-	                  					El número de contacto es obligatorio.
-									</div>
+							
 
-									<div *ngIf="contactNumber.errors && contactNumber.errors.pattern">
-										<i class="fa fa-times-circle"></i>
-	                  					Solo se permiten números.
-									</div>
-								</span>
-							</div>
+
+
 						</div>
 
 
@@ -122,7 +266,9 @@
 		                        <i class="fa fa-envelope-o"></i>
 	                        </span>
 							
-							<div [hidden]="contactEmail.valid || contactEmail.untouched" class="alert alert-danger">
+							
+
+			<div [hidden]="contactEmail.valid || contactEmail.untouched" class="alert alert-danger">
 								<span class="input-icon">
 									<div *ngIf="contactEmail.errors && contactEmail.errors.required">
 										<i class="fa fa-times-circle"></i>
@@ -135,6 +281,7 @@
 									</div>
 								</span>
 							</div>
+
 						</div>
 
 
@@ -175,3 +322,5 @@
 	    </div>
     </div>
 </form>
+
+-->

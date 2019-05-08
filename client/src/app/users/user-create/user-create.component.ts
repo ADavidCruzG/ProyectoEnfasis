@@ -4,7 +4,7 @@ import {UsersService} from '../users.service';
 import {ToasterService} from 'angular2-toaster';
 
 @Component({
-  selector: 'app-user-create',
+  selector: 'app-user-create.container-form',
   templateUrl: './user-create.component.html',
   styleUrls: ['./user-create.component.css']
 })
@@ -25,7 +25,7 @@ export class UserCreateComponent implements OnInit {
           this.usersService.createUser(this.user)
             .then(() => {
               this.toasterService.pop('success', 'Proceso exitoso', 'El usuario se creó exitosamente');
-              this.router.navigate(['home']);
+              this.router.navigate(['users/login']);
             }, (err) => {
               console.log(err);
             });

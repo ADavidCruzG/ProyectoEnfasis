@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { ToasterConfig} from 'angular2-toaster';
 import {varGlobalsService} from './globals';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,12 +14,12 @@ export class AppComponent implements OnInit {
 
 
 	
-	constructor(private varGlobalsService: varGlobalsService) {
+	constructor(private varGlobalsService: varGlobalsService, private router: Router) {
   	}
 
   	ngOnInit() {
-  		
-	}
+      this.router.navigate(['missingdocs/search']);
+    }
 
 	
 
